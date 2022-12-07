@@ -2,7 +2,8 @@
 
 # TODO
 
-- [ ] Horario (Classe de data para controlarmos os horarios e para os compararmos)
+O horario é uma classes do java (LocalDate/LocalDateTime)
+
 - [ ] Sala (guarda os horarios (ArrayList) em que vai estar ocupada, Metodos: bool disponivel(Horario))
 - [ ] Especialidade(Salario)
 - [ ] Medico (Campos necessarios (ex: Nome, ID), especialidade, turnos, metodos: bool disponivel(horario))
