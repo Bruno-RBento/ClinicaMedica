@@ -9,3 +9,9 @@
 - [ ] Paciente (Medicamentos, dados pessoais (Ex: Nome, Id, Morada, Telefone...))
 - [ ] Consulta (Horario, Medico, Sala, Paciente, metodos: CriarConsulta, Alterar, Apagar)
 - [ ] Administração/Recessão: Vai gerir as consultas, e controlar os pagamentos das respetivas consultas.
+
+# Relatório
+
+- [ ] Explicar a estrutura construída
+- [ ] Justificar as opções tomadas
+- [ ] Não mais que 10 páginas
