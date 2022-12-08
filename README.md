@@ -2,7 +2,7 @@
 
 # TODO
 
-O horario é uma classes do java (LocalDate/LocalDateTime)
+O horario é uma classe do java (LocalDate/LocalDateTime)
 
 - [ ] Sala (guarda os horarios (ArrayList) em que vai estar ocupada, Metodos: bool disponivel(Horario))
 - [ ] Especialidade(Salario)
