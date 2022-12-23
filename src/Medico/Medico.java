@@ -11,7 +11,7 @@ public class Medico extends Pessoa implements Serializable {
 
     public static Medico novoMedico() {
         Pessoa p = Pessoa.novaPessoa();
-        return new Medico(p, Especialidade.ANESTESIOLOGIA);
+        return new Medico(p, Especialidade.getEspecialidade());
     }
 
     public Medico(Pessoa p, Especialidade especialidade) {

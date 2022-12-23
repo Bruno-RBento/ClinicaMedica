@@ -1,34 +1,34 @@
-package consultorio;
+package Consultorio;
 
 import java.io.*;
 import java.util.ArrayList;
-import ler.Ler;
+import Ler.Ler;
 
 public class GerirConsultorio {
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		@SuppressWarnings("resource")
 		String inp = "";
-		File file1 = new File("...MemoryFile\\salas.dat"); 
+		File file1 = new File("../MemoryFile/salas.dat");
 		ArrayList<Consultorio> salas = new ArrayList<Consultorio>();
-		
+
 		try {
 			FileInputStream fIs = new FileInputStream(file1);
 			ObjectInputStream is = new ObjectInputStream(fIs);
 			Consultorio.setUltNumero(is.readInt());
-			salas = (ArrayList<Consultorio>)is.readObject();
+			salas = (ArrayList<Consultorio>) is.readObject();
 			is.close();
-		} catch (IOException e){
+		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		} catch (ClassNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 		do {
 			System.out.println(menuConsul());
 			inp = Ler.umaString();
-			
-			switch(inp) {
+
+			switch (inp) {
 			case "1":
 				FuncConsultorio.adicionarConsultorio(salas);
 				break;
@@ -45,16 +45,13 @@ public class GerirConsultorio {
 				FuncConsultorio.areaT(salas);
 				break;
 			}
-		}while(!inp.equals("6"));
-		
+		} while (!inp.equals("6"));
+
 	}
-	
+
 	private static String menuConsul() {
-		return ("1 - Adicionar Consultorio"
-				+ "\n2 - Lista com dados dos Consultorios"
-				+ "\n3 - Dados de um Consultorio dado o Número"
-				+ "\n4 - Alterar Especialidade de Consultorio"
-				+ "\n5 - Area Total dos Consultorios"
-				+ "\n6 - Sair");
+		return ("1 - Adicionar Consultorio" + "\n2 - Lista com dados dos Consultorios"
+				+ "\n3 - Dados de um Consultorio dado o Número" + "\n4 - Alterar Especialidade de Consultorio"
+				+ "\n5 - Area Total dos Consultorios" + "\n6 - Sair");
 	}
 }

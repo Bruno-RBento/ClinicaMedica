@@ -26,7 +26,7 @@ public class GerirPaciente {
     // Ler ficheiro
     try {
 
-      ObjectInputStream is = new ObjectInputStream(new FileInputStream("./MemoryFile/paciente.dat"));
+      ObjectInputStream is = new ObjectInputStream(new FileInputStream("../MemoryFile/paciente.dat"));
       Paciente.setUltimo(is.readInt());
       pacientes = (ArrayList<Paciente>) is.readObject();
       is.close();

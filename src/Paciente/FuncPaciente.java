@@ -9,7 +9,7 @@ public class FuncPaciente {
   public static void saveTofile(ArrayList<Paciente> pacientes) {
     // atualizar ficheiro
     try {
-      ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("./MemoryFile/paciente.dat"));
+      ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("../MemoryFile/paciente.dat"));
       // escrever o objeto livros no ficheiro
       os.writeInt(Paciente.getUltimo());
       os.writeObject(pacientes);
