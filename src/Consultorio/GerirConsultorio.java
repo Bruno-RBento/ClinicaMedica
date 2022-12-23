@@ -9,7 +9,7 @@ public class GerirConsultorio {
 	public static void main(String[] args) {
 		@SuppressWarnings("resource")
 		String inp = "";
-		File file1 = new File("...MempryFile\\salas.dat"); 
+		File file1 = new File("...MemoryFile\\salas.dat"); 
 		ArrayList<Consultorio> salas = new ArrayList<Consultorio>();
 		
 		try {
