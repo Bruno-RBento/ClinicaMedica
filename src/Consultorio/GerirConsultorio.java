@@ -10,7 +10,7 @@ public class GerirConsultorio {
 		@SuppressWarnings("resource")
 		Scanner ler = new Scanner(System.in);
 		String inp = "";
-		File file1 = new File("C:\\Users\\diogo\\Desktop\\UBI\\2oAno\\1º Semestre\\Programação Orientada a Objetos\\Trabalho de Grupo\\ClinicaMedica-main\\src\\src\\consultorio\\salas.dat"); 
+		File file1 = new File("...\\MemoryFile\\salas.dat"); 
 		ArrayList<Consultorio> salas = new ArrayList<Consultorio>();
 		
 		try {
