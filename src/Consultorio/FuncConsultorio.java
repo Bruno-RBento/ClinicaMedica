@@ -6,7 +6,7 @@ import medico.Especialidade;
 import ler.Ler;
 
 public class FuncConsultorio {
-	private static File file1 = new File("...memor\\salas.dat"); 
+	private static File file1 = new File("...MemoryFile\\salas.dat"); 
 	
 	public static void adicionarConsultorio(ArrayList<Consultorio> salas) {
 		System.out.println("Qual a especialidade do Consultorio?");
