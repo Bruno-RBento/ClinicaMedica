@@ -2,33 +2,35 @@ package Medico;
 
 import java.io.Serializable;
 
-public class Medico implements Serializable {
-    private int medID;
-    private String nome;
+import Pessoa.Pessoa;
+
+public class Medico extends Pessoa implements Serializable {
+    private static int ultimoId = 0;
+    private int id;
     private Especialidade especialidade;
 
-    //TODO turnos add
+    public static Medico novoMedico() {
+        Pessoa p = Pessoa.novaPessoa();
+        return new Medico(p, Especialidade.ANESTESIOLOGIA);
+    }
 
-    //TODO especialidade -->arraylist passar um araylist de enum
-
-    public Medico(int medID, String nome, Especialidade especialidade) {
-        this.medID = medID;
-        this.nome = nome;
+    public Medico(Pessoa p, Especialidade especialidade) {
+        super(p.getNome(), p.getApelido(), p.getMorada(), p.getNascimento());
         this.especialidade = especialidade;
+        this.id = ultimoId + 1;
+        ultimoId++;
     }
 
-
-    public int getMedID() {
-        return medID;
+    public static int getUltimo() {
+        return ultimoId;
     }
 
-
-    public String getNome() {
-        return nome;
+    public static void setUltimo(int i) {
+        ultimoId = i;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public int getId() {
+        return id;
     }
 
     public Especialidade getEspecialidade() {
@@ -41,11 +43,7 @@ public class Medico implements Serializable {
 
     @Override
     public String toString() {
-        return "Medico ( " +
-                "medID=" + medID +
-                ", nome='" + nome + '\'' +
-                ", especialidade=" + especialidade +
-                " )";
+        return "Medico ( " + "id=" + id + ", " + super.toString() + ", especialidade=" + especialidade + " )";
     }
 
 }

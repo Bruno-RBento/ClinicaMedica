@@ -17,34 +17,47 @@ public class GerirMedico {
         opcao = Ler.umInt();
         return opcao;
     }
+
     public static void main(String[] args) {
         int escolha;
-// Lista que vai conter todos os livros;
+        // Lista que vai conter todos os livros;
         ArrayList<Medico> medicos = new ArrayList<Medico>();
-// Ler ficheiro
+        // Ler ficheiro
         try {
-
-            ObjectInputStream is = new ObjectInputStream( new FileInputStream("C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\medico.dat"));
+            ObjectInputStream is = new ObjectInputStream(new FileInputStream("../MemoryFile/medico.dat"));
+            Medico.setUltimo(is.readInt());
             medicos = (ArrayList<Medico>) is.readObject();
-        }
-        catch (IOException e){
+            is.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
-        catch ( ClassNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-        do{
+        do {
             escolha = menu();
-            switch (escolha){
-                case 1: FuncMedico.adicionarMedico(medicos);
-                    break;
-                case 2: FuncMedico.removerMedico(medicos);
-                    break;
-                case 3: FuncMedico.listarMedicos(medicos);
-                    break;
+            switch (escolha) {
+            case 1:
+                medicos.add(Medico.novoMedico());
+                break;
+            case 2:
+                System.out.print("Qual é o numero do medico");
+                int num = Ler.umInt();
+
+                for (int i = 0; i < medicos.size(); i++) {
+                    if (medicos.get(i).getId() == num) {
+                        medicos.remove(i);
+                        break;
+                    }
+
+                }
+                break;
+            case 3:
+                System.out.println(medicos);
+                break;
             }
-        } while(escolha != 7);
+
+            FuncMedico.saveTofile(medicos);
+        } while (escolha != 7);
     }
 
-    }
-
+}

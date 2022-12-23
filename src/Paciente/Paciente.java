@@ -2,48 +2,37 @@ package Paciente;
 
 import java.io.Serializable;
 
-public class Paciente implements Serializable {
+import Pessoa.Pessoa;
 
-    private int nUtenteSaude;
-    private String name;
-    private String apelido;
-    private String direccion;
+public class Paciente extends Pessoa implements Serializable {
 
+  private static int ultimoId = 0;
+  private int id;
 
+  public static Paciente novoPaciente() {
+    Pessoa p = novaPessoa();
+    return new Paciente(p);
+  }
 
+  public Paciente(Pessoa p) {
+    super(p.getNome(), p.getApelido(), p.getMorada(), p.getNascimento());
+    this.id = ultimoId + 1;
+    ultimoId++;
+  }
 
-    public Paciente(int nUtenteSaude, String name, String apelido, String direccion) {
-        this.nUtenteSaude = nUtenteSaude;
-        this.name = name;
-        this.apelido = apelido;
-        this.direccion = direccion;
-    }
+  public static int getUltimo() {
+    return ultimoId;
+  }
 
+  public static void setUltimo(int i) {
+    ultimoId = i;
+  }
 
-    public int getnUtenteSaude() {
-        return nUtenteSaude;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getApelido() {
-        return apelido;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    @Override
-    public String toString() {
-        return "Paciente( " +
-                "nUtenteSaude=" + nUtenteSaude +
-                ", name='" + name + '\'' +
-                ", apelido='" + apelido + '\'' +
-                ", direccion='" + direccion + '\'' +
-                ')';
-    }
-
+  public String toString() {
+    return String.format("Paciente ( Id: %d, %s )", id, super.toString());
+  }
 }
