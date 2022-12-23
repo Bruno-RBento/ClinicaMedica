@@ -18,7 +18,7 @@ public class GerirMedico {
         return opcao;
     }
 
-    public static void main(String[] args) {
+    public static void gerirMedicos() {
         int escolha;
         // Lista que vai conter todos os livros;
         ArrayList<Medico> medicos = new ArrayList<Medico>();
