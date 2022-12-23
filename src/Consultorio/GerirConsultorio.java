@@ -1,4 +1,61 @@
-package Consultorio;
+package consultorio;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class GerirConsultorio {
+	@SuppressWarnings("unchecked")
+	public static void main(String[] args) {
+		@SuppressWarnings("resource")
+		Scanner ler = new Scanner(System.in);
+		String inp = "";
+		File file1 = new File("C:\\Users\\diogo\\Desktop\\UBI\\2oAno\\1º Semestre\\Programação Orientada a Objetos\\Trabalho de Grupo\\ClinicaMedica-main\\src\\src\\consultorio\\salas.dat"); 
+		ArrayList<Consultorio> salas = new ArrayList<Consultorio>();
+		
+		try {
+			FileInputStream fIs = new FileInputStream(file1);
+			ObjectInputStream is = new ObjectInputStream(fIs);
+			Consultorio.setUltNumero(is.readInt());
+			salas = (ArrayList<Consultorio>)is.readObject();
+			is.close();
+		} catch (IOException e){
+			System.out.println(e.getMessage());
+		} catch (ClassNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		do {
+			System.out.println(menuConsul());
+			inp = ler.nextLine();
+			
+			switch(inp) {
+			case "1":
+				FuncConsultorio.adicionarConsultorio(salas);
+				break;
+			case "2":
+				System.out.println(salas.toString());
+				break;
+			case "3":
+				FuncConsultorio.getSala(salas);
+				break;
+			case "4":
+				FuncConsultorio.altEsp(salas);
+				break;
+			case "5":
+				FuncConsultorio.areaT(salas);
+				break;
+			}
+		}while(!inp.equals("6"));
+		
+	}
+	
+	private static String menuConsul() {
+		return ("1 - Adicionar Consultorio"
+				+ "\n2 - Lista com dados dos Consultorios"
+				+ "\n3 - Dados de um Consultorio dado o Número"
+				+ "\n4 - Alterar Especialidade de Consultorio"
+				+ "\n5 - Area Total dos Consultorios"
+				+ "\n6 - Sair");
+	}
 }
