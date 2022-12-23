@@ -7,7 +7,7 @@ import medico.Especialidade;
 
 public class FuncConsultorio {
 	private static Scanner ler = new Scanner(System.in);
-	private static File file1 = new File("C:\\Users\\diogo\\Desktop\\UBI\\2oAno\\1º Semestre\\Programação Orientada a Objetos\\Trabalho de Grupo\\ClinicaMedica-main\\src\\src\\consultorio\\salas.dat"); 
+	private static File file1 = new File("...\\MemoryFile\\salas.dat"); 
 	
 	public static void adicionarConsultorio(ArrayList<Consultorio> salas) {
 		System.out.println("Qual a especialidade do Consultorio?");
