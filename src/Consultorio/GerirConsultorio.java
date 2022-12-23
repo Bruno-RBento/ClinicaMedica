@@ -2,15 +2,14 @@ package consultorio;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Scanner;
+import ler.Ler;
 
 public class GerirConsultorio {
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		@SuppressWarnings("resource")
-		Scanner ler = new Scanner(System.in);
 		String inp = "";
-		File file1 = new File("...\\MemoryFile\\salas.dat"); 
+		File file1 = new File("...MempryFile\\salas.dat"); 
 		ArrayList<Consultorio> salas = new ArrayList<Consultorio>();
 		
 		try {
@@ -27,7 +26,7 @@ public class GerirConsultorio {
 		
 		do {
 			System.out.println(menuConsul());
-			inp = ler.nextLine();
+			inp = Ler.umaString();
 			
 			switch(inp) {
 			case "1":

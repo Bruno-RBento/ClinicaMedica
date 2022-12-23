@@ -2,18 +2,17 @@ package consultorio;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 import medico.Especialidade;
+import ler.Ler;
 
 public class FuncConsultorio {
-	private static Scanner ler = new Scanner(System.in);
-	private static File file1 = new File("...\\MemoryFile\\salas.dat"); 
+	private static File file1 = new File("...MempryFile\\salas.dat"); 
 	
 	public static void adicionarConsultorio(ArrayList<Consultorio> salas) {
 		System.out.println("Qual a especialidade do Consultorio?");
 		Especialidade esp = list(); //escolhe uma opção da lista de especialidades
 		System.out.println("Qual as medidas do consultorio no formato - (width height)");
-		String medidas = ler.nextLine();
+		String medidas = Ler.umaString();
 		String lados[] = medidas.split(" ");
 		
 		Consultorio c = new Consultorio(esp, Integer.parseInt(lados[0]), Integer.parseInt(lados[1]));
@@ -32,7 +31,7 @@ public class FuncConsultorio {
 	
 	public static void getSala(ArrayList<Consultorio> salas) {
 		System.out.println("Qual o número do Consultorio?");
-		int num = ler.nextInt();
+		int num = Ler.umInt();
 		Consultorio x = new Consultorio();
 		
 		for(int i = 0; i < salas.size(); i++) {
@@ -49,8 +48,7 @@ public class FuncConsultorio {
 	
 	public static void altEsp(ArrayList<Consultorio> salas) {
 		System.out.println("Qual o número do Consultorio?");
-		int num = ler.nextInt();
-		ler.nextLine(); //ler o "\n"
+		int num = Ler.umInt();
 		for(int i = 0; i < salas.size(); i++) {
 			if(salas.get(i).getNum() == num) {
 				System.out.println("Qual a nova especialidade?");
@@ -94,8 +92,7 @@ public class FuncConsultorio {
         				+ "\n11 - MEDICINA_DESPORTIVA"
         				+ "\n12 - MEDICINA_FISICA_E_REABILITCAO"
         				+ "\n13 - MEDICINA_GERAL_E_FAMILIAR");
-        int opcao = ler.nextInt();
-        ler.nextLine();
+        int opcao = Ler.umInt();
 
         switch (opcao){
             case 1: return Especialidade.CARDIOLOGIA;
