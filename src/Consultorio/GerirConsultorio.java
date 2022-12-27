@@ -7,9 +7,13 @@ import Ler.Ler;
 public class GerirConsultorio {
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
+	gerirConsultorio();
+	}
+
+	public static void gerirConsultorio(){
 		@SuppressWarnings("resource")
 		String inp = "";
-		File file1 = new File("../MemoryFile/salas.dat");
+		File file1 = new File("C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\salas.dat");
 		ArrayList<Consultorio> salas = new ArrayList<Consultorio>();
 
 		try {

@@ -22,17 +22,8 @@ public class GerirMedico {
         int escolha;
         // Lista que vai conter todos os livros;
         ArrayList<Medico> medicos = new ArrayList<Medico>();
-        // Ler ficheiro
-        try {
-            ObjectInputStream is = new ObjectInputStream(new FileInputStream("../MemoryFile/medico.dat"));
-            Medico.setUltimo(is.readInt());
-            medicos = (ArrayList<Medico>) is.readObject();
-            is.close();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        } catch (ClassNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
+        medicos = FuncMedico.getMedico();
+
         do {
             escolha = menu();
             switch (escolha) {
@@ -54,8 +45,11 @@ public class GerirMedico {
             case 3:
                 System.out.println(medicos);
                 break;
-            }
 
+            case 4:
+                FuncMedico.searchMedico(medicos);
+                break;
+            }
             FuncMedico.saveTofile(medicos);
         } while (escolha != 7);
     }

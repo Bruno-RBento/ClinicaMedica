@@ -1,10 +1,12 @@
 package consulta;
 
-import consultorio.Consultorio;
-import medico.Medico;
-import paciente.Paciente;
+import Consultorio.Consultorio;
+import Medico.Medico;
+import Paciente.Paciente;
 
-public class Consulta {
+import java.io.Serializable;
+
+public class Consulta implements Serializable {
 	private static long ult_id = 000000001;
 	private long id_cons;
 	private int hora_inicio;
