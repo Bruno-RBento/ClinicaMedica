@@ -47,6 +47,7 @@ public class GerirConsulta {
     }
     public static int menuEspecialidade(ArrayList<Medico> medicos){
         int opcao;
+
         for (int i = 0; i < medicos.size(); i++) {
             System.out.println(  i + " - " + medicos.get(i).getNome() + " " + medicos.get(i).getApelido() + " "  + medicos.get(i).getEspecialidade());
         }
@@ -55,29 +56,13 @@ public class GerirConsulta {
             opcao = Ler.umInt();
 
         }while (opcao <0 && opcao > medicos.size());
-        return opcao;
+        System.out.println("opcao" + opcao);
+        System.out.println(medicos);
+        System.out.println(medicos.get(opcao).getNome());
+        System.out.println(medicos.get(opcao).getId());
+        return medicos.get(opcao).getId();
     }
 
-        public static void menuHorario(){
-        //Todo provavelmente adicionar o mes seguinte para tentar fazer a marcacao
-        int opcao;
-            LocalDateTime dateTime = LocalDateTime.now();
-            int day = dateTime.getDayOfMonth();
-            YearMonth monthday = YearMonth.of(dateTime.getYear(), dateTime.getMonth());
-            int daysInMonth = monthday.lengthOfMonth();
-
-            System.out.println("Selecione o dia para fazer a marcacao");
-
-            for (int i = day + 1; i < daysInMonth; i++) {
-                int dayofWeek = LocalDateTime.of(dateTime.getYear(), dateTime.getMonth(), i, 00, 00, 00).getDayOfWeek().getValue();
-                if (dayofWeek != 5 && dayofWeek != 6) ;
-
-                System.out.println(i + " " + dateTime.getMonth());
-            }
-            do {
-                opcao = Ler.umInt();
-        }while (opcao != -1);
-        }
 
     public static void gerirConsultas() {
         int escolha;
@@ -118,17 +103,24 @@ public static void selecionarMedico(){
                 Especialidade especialidade = Especialidade.getEspecialidade();
                 medicosSelecionados = FuncMedico.searchEspecialidade(medicos,especialidade);
                 System.out.println(medicosSelecionados);
-                medicoSelecionado = medicos.get(menuEspecialidade(medicosSelecionados));
-                System.out.println("O Medico selecioando foi "+ medicoSelecionado.toString());
-                //TODO mostrar menu de escolha do horario.
-                menuHorario();
+
+                int idMedico = menuEspecialidade(medicosSelecionados);
+                System.out.println("id medico " + idMedico + " " + medicos.get(idMedico).getNome());
+                System.out.println("-------------");
+                System.out.println(medicos);
+                medicoSelecionado = medicos.get(idMedico);
+
+                System.out.println("O Medico selecioando foi "+ medicoSelecionado.getNome());
+                LocalDateTime localDateTime = FuncConsulta.menuDia(FuncConsulta.menuMes());
+                FuncConsulta.menuHora();
+                //TODO Filtrar as Salas disponiveis
                 break;
             case 2:
                 System.out.println(medicos.toString());
-                  medicoSelecionado = FuncMedico.searchMedico(medicos);
-                  System.out.println("O Medico selecioando foi "+ medicoSelecionado.toString());
-                  //TODO mostrar menu de escolha do horario.
-                menuHorario();
+                medicoSelecionado = FuncMedico.searchMedico(medicos);
+                System.out.println("O Medico selecioando foi "+ medicoSelecionado.toString());
+                FuncConsulta.menuHora();
+                //TODO Filtrar as Salas disponiveis
                 break;
         }
     }while (num != 7);
