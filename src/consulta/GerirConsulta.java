@@ -56,10 +56,6 @@ public class GerirConsulta {
             opcao = Ler.umInt();
 
         }while (opcao <0 && opcao > medicos.size());
-        System.out.println("opcao" + opcao);
-        System.out.println(medicos);
-        System.out.println(medicos.get(opcao).getNome());
-        System.out.println(medicos.get(opcao).getId());
         return medicos.get(opcao).getId();
     }
 
@@ -70,7 +66,7 @@ public class GerirConsulta {
         Paciente novoPaciente = null;
 
         pacientes = FuncPaciente.getPacientes();
-medicos = FuncMedico.getMedico();
+        medicos = FuncMedico.getMedico();
 
         do {
             escolha1 = menuPaciente();
@@ -105,10 +101,14 @@ public static void selecionarMedico(){
                 System.out.println(medicosSelecionados);
 
                 int idMedico = menuEspecialidade(medicosSelecionados);
-                System.out.println("id medico " + idMedico + " " + medicos.get(idMedico).getNome());
-                System.out.println("-------------");
-                System.out.println(medicos);
-                medicoSelecionado = medicos.get(idMedico);
+
+
+                for (int i = 0; i <medicos.size(); i++) {
+                    if(medicos.get(i).getId() == idMedico){
+
+                medicoSelecionado = medicos.get(i);
+                    }
+                }
 
                 System.out.println("O Medico selecioando foi "+ medicoSelecionado.getNome());
                 LocalDateTime localDateTime = FuncConsulta.menuDia(FuncConsulta.menuMes());
@@ -125,6 +125,5 @@ public static void selecionarMedico(){
         }
     }while (num != 7);
 }
-
 
 }
