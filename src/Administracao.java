@@ -1,4 +1,5 @@
 import Ler.Ler;
+import Medico.GerirMedico;
 import Paciente.GerirPaciente;
 
 class Administracao {
@@ -15,7 +16,7 @@ class Administracao {
         GerirPaciente.gerirPaciente();
         break;
       case 2:
-        GerirPaciente.gerirPaciente();
+        GerirMedico.gerirMedicos();
         break;
       }
     } while (op != -1);
