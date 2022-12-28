@@ -8,7 +8,7 @@ import Medico.Especialidade;
 public class Consultorio implements Serializable {
     private static int ultNumero = 0;
     private int num;
-    private Especialidade especialidade;
+
     private int area;
 
     public Consultorio() {
@@ -16,10 +16,10 @@ public class Consultorio implements Serializable {
         num = ultNumero;
     }
 
-    public Consultorio(Especialidade especialidade, int width, int height) {
+    public Consultorio(int width, int height) {
         ultNumero++;
         this.num = ultNumero;
-        this.especialidade = especialidade;
+
         area = width * height;
     }
 
@@ -39,14 +39,6 @@ public class Consultorio implements Serializable {
         this.num = num;
     }
 
-    public Especialidade getEspecialidade() {
-        return especialidade;
-    }
-
-    public void setEspecialidade(Especialidade especialidade) {
-        this.especialidade = especialidade;
-    }
-
     public int getArea() {
         return area;
     }
@@ -57,20 +49,19 @@ public class Consultorio implements Serializable {
 
     @Override
     public String toString() {
-        return "Consultorio [num=" + num + ", especialidade=" + especialidade + ", area=" + area + "]";
+        return "Consultorio [num=" + num +  ", area=" + area + "]";
     }
 
     public boolean equals(Object o) {
         if (o != null && o.getClass() == this.getClass()) {
             Consultorio c = (Consultorio) o;
-            return (c.getArea() == this.getArea() && c.getEspecialidade().equals(this.getEspecialidade()));
+            return (c.getArea() == this.getArea());
         }
         return false;
     }
 
     public Consultorio clone() {
         Consultorio x = new Consultorio();
-        x.setEspecialidade(this.getEspecialidade());
         x.setArea(this.getArea());
         x.setNum(this.getNum());
         return x;

@@ -42,10 +42,8 @@ public class GerirConsultorio {
 			case "3":
 				FuncConsultorio.getSala(salas);
 				break;
+
 			case "4":
-				FuncConsultorio.altEsp(salas);
-				break;
-			case "5":
 				FuncConsultorio.areaT(salas);
 				break;
 			}
@@ -55,7 +53,6 @@ public class GerirConsultorio {
 
 	private static String menuConsul() {
 		return ("1 - Adicionar Consultorio" + "\n2 - Lista com dados dos Consultorios"
-				+ "\n3 - Dados de um Consultorio dado o Número" + "\n4 - Alterar Especialidade de Consultorio"
-				+ "\n5 - Area Total dos Consultorios" + "\n6 - Sair");
+				+ "\n3 - Dados de um Consultorio dado o Número" + "\n4 - Area Total dos Consultorios" + "\n6 - Sair");
 	}
 }
