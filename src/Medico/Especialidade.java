@@ -3,8 +3,28 @@ package Medico;
 import Ler.Ler;
 
 public enum Especialidade {
-    CARDIOLOGIA, ANESTESIOLOGIA, DERMATOLOGIA, ENDOCRINOLOGIA, GASTROENTEROLOGIA, PNEUMOLOGIA, OBSTERICIA, PSIQUIATRIA,
-    CIRUGIA_GERAL, MEDICINA_TRABALHO, MEDICINA_DESPORTIVA, MEDICINA_FISICA_E_REABILITCAO, MEDICINA_GERAL_E_FAMILIAR;
+    CARDIOLOGIA(2000,50),
+    ANESTESIOLOGIA(2000,50),
+    DERMATOLOGIA(2000,50),
+    ENDOCRINOLOGIA(2000,50),
+    GASTROENTEROLOGIA(2000,50),
+    PNEUMOLOGIA(2000,50),
+    OBSTERICIA(2000,50),
+    PSIQUIATRIA(2000,50),
+    CIRUGIA_GERAL(2000,50),
+    MEDICINA_TRABALHO(2000,50),
+    MEDICINA_DESPORTIVA(2000,50),
+    MEDICINA_FISICA_E_REABILITCAO(2000,50),
+    MEDICINA_GERAL_E_FAMILIAR(2000,50);
+
+    private int salario;
+    private int custoConsulta;
+
+
+    Especialidade(int salario,int custoConsulta) {
+        this.salario = salario;
+        this.custoConsulta = custoConsulta;
+    }
 
     public static Especialidade getEspecialidade() {
         System.out.println("1 - CARDIOLOGIA" + "\n2 - ANESTESIOLOGIA" + "\n3 - DERMATOLOGIA" + "\n4 - ENDOCRINOLOGIA"
