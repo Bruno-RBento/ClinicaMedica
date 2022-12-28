@@ -3,14 +3,29 @@ package consulta;
 import Ler.Ler;
 import Medico.Medico;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.util.ArrayList;
 
 public class FuncConsulta {
+
+    public  static ArrayList<Consulta> getConsulta(){
+        // Lista que vai conter todos os livros;
+        ArrayList<Consulta> consulta = new ArrayList<Consulta>();
+        // Ler ficheiro
+        try {
+            ObjectInputStream is = new ObjectInputStream(new FileInputStream("C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\consultas.dat"));
+            //Consulta.setUltimo(is.readInt());
+            consulta = (ArrayList<Consulta>) is.readObject();
+            is.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+        return consulta;
+    }
 
     public static int menuMes(){
 
@@ -104,6 +119,7 @@ public class FuncConsulta {
         try {
             ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\consultas.dat"));
             // escrever o objeto livros no ficheiro
+            os.writeInt(Consulta.getUltimo());
             os.writeObject(consultas);
             os.flush(); // os dados são copiados de memória para o disco
         } catch (IOException e) {

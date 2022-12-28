@@ -1,5 +1,6 @@
 package consulta;
 
+import Consultorio.FuncConsultorio;
 import Consultorio.Consultorio;
 import Ler.Ler;
 import Medico.FuncMedico;
@@ -7,6 +8,7 @@ import Medico.Especialidade;
 import Medico.Medico;
 import Paciente.Paciente;
 import Paciente.FuncPaciente;
+
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -59,6 +61,18 @@ public class GerirConsulta {
         return medicos.get(opcao).getId();
     }
 
+    public static int menuConsultorio(){
+        int opcao;
+        System.out.println("Selecione o mes para fazer a marcacao");
+        for (int i = 0; i < consultorios.size(); i++) {
+            System.out.println( i + " Consultorio numero " + consultorios.get(i).getNum() + " " + consultorios.get(i).getArea());
+        }
+        do {
+            opcao = Ler.umInt();
+
+        }while (opcao <0 && opcao > consultorios.size());
+        return consultorios.get(opcao).getNum();
+    }
 
     public static void gerirConsultas() {
         int escolha;
@@ -67,6 +81,7 @@ public class GerirConsulta {
 
         pacientes = FuncPaciente.getPacientes();
         medicos = FuncMedico.getMedico();
+        consultorios = FuncConsultorio.getConsultorios();
 
         do {
             escolha1 = menuPaciente();
@@ -92,7 +107,6 @@ public static void selecionarMedico(){
     int num = menuMedico();
     Medico medicoSelecionado = null;
     do{
-
         switch (num) {
             case 1:
                 ArrayList<Medico> medicosSelecionados = new ArrayList<Medico>();
@@ -114,6 +128,7 @@ public static void selecionarMedico(){
                 LocalDateTime localDateTime = FuncConsulta.menuDia(FuncConsulta.menuMes());
                 FuncConsulta.menuHora();
                 //TODO Filtrar as Salas disponiveis
+                menuConsultorio();
                 break;
             case 2:
                 System.out.println(medicos.toString());
@@ -121,9 +136,11 @@ public static void selecionarMedico(){
                 System.out.println("O Medico selecioando foi "+ medicoSelecionado.toString());
                 FuncConsulta.menuHora();
                 //TODO Filtrar as Salas disponiveis
+                menuConsultorio();
                 break;
         }
     }while (num != 7);
 }
+
 
 }

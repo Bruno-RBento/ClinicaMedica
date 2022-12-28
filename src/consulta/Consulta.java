@@ -7,6 +7,7 @@ import Paciente.Paciente;
 import java.io.Serializable;
 
 public class Consulta implements Serializable {
+	private static int ultimoId = 0;
 	private static long ult_id = 000000001;
 	private long id_cons;
 	//TODO CHANGE DATATYPE
@@ -30,6 +31,7 @@ public class Consulta implements Serializable {
 		this.cons = cons;
 		this.medico = med;
 		this.paciente = p;
+		ultimoId++;
 	}
 	
 	public long getId_Cons() {
@@ -44,6 +46,13 @@ public class Consulta implements Serializable {
 		this.hora_inicio = hora_inicio;
 	}
 
+	public static int getUltimo() {
+		return ultimoId;
+	}
+
+	public static void setUltimo(int i) {
+		ultimoId = i;
+	}
 
 
 	public Consultorio getCons() {

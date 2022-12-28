@@ -8,6 +8,26 @@ import Ler.Ler;
 public class FuncConsultorio {
 	private static File file1 = new File("C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\salas.dat");
 
+	public static ArrayList<Consultorio> getConsultorios(){
+		File file1 = new File("C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\salas.dat");
+		ArrayList<Consultorio> salas = new ArrayList<Consultorio>();
+
+		try {
+			FileInputStream fIs = new FileInputStream(file1);
+			ObjectInputStream is = new ObjectInputStream(fIs);
+			Consultorio.setUltNumero(is.readInt());
+			salas = (ArrayList<Consultorio>) is.readObject();
+			is.close();
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} catch (ClassNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+		return salas;
+	}
+
+
+
 	public static void adicionarConsultorio(ArrayList<Consultorio> salas) {
 		System.out.println("Qual a especialidade do Consultorio?");
 		Especialidade esp = Especialidade.getEspecialidade(); // escolhe uma opção da lista de especialidades

@@ -16,13 +16,12 @@ public class FuncMedico {
             Medico.setUltimo(is.readInt());
             medicos = (ArrayList<Medico>) is.readObject();
             is.close();
-            return medicos;
         } catch (IOException e) {
             System.out.println(e.getMessage());
         } catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
-        return null;
+        return medicos;
     }
 
 
