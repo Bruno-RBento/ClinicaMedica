@@ -122,6 +122,7 @@ public class FuncConsulta {
             os.writeInt(Consulta.getUltimo());
             os.writeObject(consultas);
             os.flush(); // os dados são copiados de memória para o disco
+            System.out.println(consultas);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

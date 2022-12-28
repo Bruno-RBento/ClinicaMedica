@@ -29,13 +29,11 @@ public class FuncConsultorio {
 
 
 	public static void adicionarConsultorio(ArrayList<Consultorio> salas) {
-		System.out.println("Qual a especialidade do Consultorio?");
-		Especialidade esp = Especialidade.getEspecialidade(); // escolhe uma opção da lista de especialidades
 		System.out.println("Qual as medidas do consultorio no formato - (width height)");
 		String medidas = Ler.umaString();
 		String lados[] = medidas.split(" ");
 
-		Consultorio c = new Consultorio(esp, Integer.parseInt(lados[0]), Integer.parseInt(lados[1]));
+		Consultorio c = new Consultorio( Integer.parseInt(lados[0]), Integer.parseInt(lados[1]));
 		salas.add(c);
 
 		try {
@@ -62,9 +60,9 @@ public class FuncConsultorio {
 		}
 
 		System.out.println(
-				"Consultorio nº " + x.getNum() + "\nEspecialidade: " + x.getEspecialidade() + "\nArea: " + x.getArea());
+				"Consultorio nº " + x.getNum() + "\nArea: " + x.getArea());
 	}
-
+/*
 	public static void altEsp(ArrayList<Consultorio> salas) {
 		System.out.println("Qual o número do Consultorio?");
 		int num = Ler.umInt();
@@ -86,6 +84,7 @@ public class FuncConsultorio {
 			System.out.println(e.getMessage());
 		}
 	}
+*/
 
 	public static void areaT(ArrayList<Consultorio> salas) {
 		int areaT = 0;
