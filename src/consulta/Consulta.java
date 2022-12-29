@@ -71,9 +71,9 @@ public class Consulta implements Serializable {
 	@Override
 	public String toString() {
 		return "Consulta:"
-				+ "\nID: " + id_cons
+				+ "\n n do consultorio: " + id_cons
 				+ "\nHora de Inicio: " + hora_inicio
-				+ "\nConsultório: " + cons
+
 				+ "\nMedico: " + medico
 				+ "\nPaciente: " + paciente + "\n";
 	}
@@ -85,5 +85,9 @@ public class Consulta implements Serializable {
 
 	public void setHora_inicio(LocalDateTime hora_inicio) {
 		this.hora_inicio = hora_inicio;
+	}
+	public Object clone() {
+		Consulta copia = new Consulta(this.hora_inicio,this.cons, this.medico, this.paciente);
+		return copia;
 	}
 }

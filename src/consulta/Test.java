@@ -13,14 +13,18 @@ public class Test {
     public static void main(String[] args) {
         ArrayList<Consulta> consulta = FuncConsulta.getConsulta();
 
+
         Consultorio consultorio = new Consultorio(10,10);
         LocalDateTime dateTime = LocalDateTime.now();
-        Pessoa pessoa = new Pessoa("aaa","bbbb","sdasdasdasd", dateTime);
+        Pessoa pessoa = new Pessoa("qqq","zzz","sdasdasdasd", dateTime);
         Medico medico = new Medico(pessoa,Especialidade.ANESTESIOLOGIA);
         Paciente paciente = new Paciente(pessoa);
         LocalDateTime data = LocalDateTime.now();
         Consulta consultaT = new Consulta(data,consultorio,medico,paciente);
         consulta.add(consultaT);
         FuncConsulta.saveTofile(consulta);
+
+
+        System.out.println(consulta);
     }
 }

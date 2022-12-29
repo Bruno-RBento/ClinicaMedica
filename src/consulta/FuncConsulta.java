@@ -1,7 +1,9 @@
 package consulta;
 
+import Consultorio.GerirConsultorio;
 import Ler.Ler;
-import Medico.Medico;
+import Medico.GerirMedico;
+import Paciente.GerirPaciente;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -26,6 +28,35 @@ public class FuncConsulta {
         }
         return consulta;
     }
+
+    public static  void menuPrincipal(){
+        int op = 0;
+        do {
+            System.out.println("1 - Gerir pacientes");
+            System.out.println("2 - Gerir medicos");
+            System.out.println("3 - Gerir Consultorio");
+            System.out.println("4 - Gerir Consulta");
+            System.out.println("-1 - Sair");
+            op = Ler.umInt();
+
+            switch (op) {
+                case 1:
+                    GerirPaciente.gerirPaciente();
+                    break;
+                case 2:
+                    GerirMedico.gerirMedicos();
+                    break;
+                case 3:
+                    GerirConsultorio.gerirConsultorio();
+                    break;
+                case 4:
+                    GerirConsulta.gerirConsultas();
+                    break;
+
+            }
+        } while (op != -1);
+    }
+
 
     public static int menuMes(){
 
@@ -113,6 +144,7 @@ public class FuncConsulta {
         }while (opcao < 8 || opcao >= 17);
         return opcao;
     }
+
 
     public static void saveTofile(ArrayList<Consulta> consultas) {
         // atualizar ficheiro

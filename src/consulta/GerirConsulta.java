@@ -31,7 +31,7 @@ public class GerirConsulta {
         int opcao;
         System.out.println("1 - Criar Consulta");
         System.out.println("2 - Listar as Consultas");
-        System.out.println("3 - Remover as Consultas");
+        System.out.println("3 - Remover as Consulta");
         System.out.println("7 - Sair ");
         System.out.println("Selecione uma opcao");
         opcao = Ler.umInt();
@@ -73,7 +73,7 @@ public class GerirConsulta {
         return medicos.get(opcao).getId();
     }
 
-    public static int menuConsultorio(){
+    public static Consultorio menuConsultorio(){
         int opcao;
         do {
         System.out.println("Selecione o mes para fazer a marcacao");
@@ -83,7 +83,7 @@ public class GerirConsulta {
             opcao = Ler.umInt();
 
         }while (opcao < 0 || opcao > consultorios.size());
-        return consultorios.get(opcao).getNum();
+        return consultorios.get(opcao);
     }
 
     public static void gerirConsultas() {
@@ -100,18 +100,19 @@ public class GerirConsulta {
                     System.out.println(consultas);
                     break;
 
-                    case 3:
-
-                        //TODO Remover consultas
-
+                case 3:
+                    System.out.print("Id da Consulta que se pretende remover: ");
+                    int id = Ler.umInt();
+                    boolean removed = false;
+                    for (int i = 0; i < consultas.size(); i++) {
+                        if (consultas.get(i).getId_Cons() == id) {
+                            consultas.remove(i);
+                            removed = true;
+                        }
+                    }
             }
-            //System.out.println(novoPaciente.toString());
-        }while (escolha1 != 7) ;
-    }
-
-
-
-
+        }while (escolha1 != 7);
+            }
 
     public static void selecionarPacientes() {
         int escolha;
@@ -121,6 +122,7 @@ public class GerirConsulta {
         pacientes = FuncPaciente.getPacientes();
         medicos = FuncMedico.getMedico();
         consultorios = FuncConsultorio.getConsultorios();
+        consultas = FuncConsulta.getConsulta();
 
         do {
             escolha1 = menuPaciente();
@@ -128,21 +130,22 @@ public class GerirConsulta {
             switch (escolha1) {
                 case 1:
                     if(FuncPaciente.searchPaciente(pacientes) != null){
-                        selecionarMedico();
+                        Paciente pacienteF = FuncPaciente.searchPaciente(pacientes);
+                        selecionarMedico(pacienteF);
                     }
                     break;
                 case 2:
+                    Paciente pacienteF = Paciente.novoPaciente();
                     pacientes.add(Paciente.novoPaciente());
                     FuncPaciente.saveTofile(pacientes);
 
-                    selecionarMedico();
+                    selecionarMedico(pacienteF);
                     break;
             }
-            //System.out.println(novoPaciente.toString());
             }while (escolha1 != 7) ;
         }
 
-public static void selecionarMedico(){
+public static void selecionarMedico(Paciente pacienteF){
     int num = menuMedico();
     Medico medicoSelecionado = null;
     Especialidade especialidade;
@@ -157,7 +160,7 @@ public static void selecionarMedico(){
                     System.out.println(especialidade);
                     boolean bool = FuncMedico.searchEspecialidade(medicos, especialidade).isEmpty();
                     if (bool){
-                        System.out.println("A especialidade selecionada nao tem medicos nestq clinica");
+                        System.out.println("A especialidade selecionada nao tem medicos nesta clinica");
                     }
 
                 }while (FuncMedico.searchEspecialidade(medicos, especialidade).isEmpty());
@@ -180,7 +183,11 @@ public static void selecionarMedico(){
 
                 System.out.println("-----------------------");
                 //TODO Filtrar as Salas disponiveis
-                menuConsultorio();
+                Consultorio consultorio = menuConsultorio();
+                consultas.add (new Consulta(localDateTime,consultorio,medicoSelecionado,pacienteF));
+                FuncConsulta.saveTofile(consultas);
+
+                FuncConsulta.menuPrincipal();
                 break;
             case 2:
                 System.out.println(medicos.toString());
@@ -189,7 +196,12 @@ public static void selecionarMedico(){
                 LocalDateTime localDateTime2 = FuncConsulta.menuDia(FuncConsulta.menuMes());
                 System.out.println("-----------------------");
                 //TODO Filtrar as Salas disponiveis
-                menuConsultorio();
+
+                Consultorio consultorio2 = menuConsultorio();
+                consultas.add (new Consulta(localDateTime2,consultorio2,medicoSelecionado,pacienteF));
+                FuncConsulta.saveTofile(consultas);
+
+                FuncConsulta.menuPrincipal();
                 break;
         }
     }while (num != 7);
