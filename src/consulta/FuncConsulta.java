@@ -16,7 +16,7 @@ public class FuncConsulta {
         // Ler ficheiro
         try {
             ObjectInputStream is = new ObjectInputStream(new FileInputStream("C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\consultas.dat"));
-            //Consulta.setUltimo(is.readInt());
+            Consulta.setUltimo(is.readInt());
             consulta = (ArrayList<Consulta>) is.readObject();
             is.close();
         } catch (IOException e) {
