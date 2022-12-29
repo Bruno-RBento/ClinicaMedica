@@ -27,6 +27,18 @@ public class GerirConsulta {
     private static Paciente pacienteF;
 
 
+    public static int menuConsulta() {
+        int opcao;
+        System.out.println("1 - Criar Consulta");
+        System.out.println("2 - Listar as Consultas");
+        System.out.println("3 - Remover as Consultas");
+        System.out.println("7 - Sair ");
+        System.out.println("Selecione uma opcao");
+        opcao = Ler.umInt();
+        return opcao;
+    }
+
+
     public static int menuPaciente() {
         int opcao;
         System.out.println("O paciente tem esta inscrito na clinica");
@@ -75,6 +87,33 @@ public class GerirConsulta {
     }
 
     public static void gerirConsultas() {
+        int escolha1;
+        do {
+            escolha1 = menuConsulta();
+
+            switch (escolha1) {
+                case 1:
+                    selecionarPacientes();
+                    break;
+                case 2:
+                    //Listar Consultas
+                    System.out.println(consultas);
+                    break;
+
+                    case 3:
+
+                        //TODO Remover consultas
+
+            }
+            //System.out.println(novoPaciente.toString());
+        }while (escolha1 != 7) ;
+    }
+
+
+
+
+
+    public static void selecionarPacientes() {
         int escolha;
         int escolha1;
         Paciente novoPaciente = null;
