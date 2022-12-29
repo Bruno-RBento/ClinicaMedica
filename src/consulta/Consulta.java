@@ -9,18 +9,16 @@ import java.time.LocalDateTime;
 
 public class Consulta implements Serializable {
 	private static int ultimoId = 0;
-	private static long ult_id = 000000001;
 	private long id_cons;
-	//TODO CHANGE DATATYPE
+	// TODO CHANGE DATATYPE
 	private LocalDateTime hora_inicio;
 	private Consultorio cons;
 	private Medico medico;
 	private Paciente paciente;
 
-	
 	public Consulta(LocalDateTime h_i, Consultorio cons, Medico med, Paciente p) {
-		ult_id++;
-		this.id_cons = ult_id;
+		ultimoId++;
+		this.id_cons = ultimoId;
 		this.hora_inicio = h_i;
 
 		this.cons = cons;
@@ -28,12 +26,10 @@ public class Consulta implements Serializable {
 		this.paciente = p;
 		ultimoId++;
 	}
-	
+
 	public long getId_Cons() {
-		return this.id_cons = ult_id;
+		return this.id_cons = ultimoId;
 	}
-
-
 
 	public static int getUltimo() {
 		return ultimoId;
@@ -42,7 +38,6 @@ public class Consulta implements Serializable {
 	public static void setUltimo(int i) {
 		ultimoId = i;
 	}
-
 
 	public Consultorio getCons() {
 		return cons;
@@ -70,14 +65,9 @@ public class Consulta implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Consulta:"
-				+ "\nID: " + id_cons
-				+ "\nHora de Inicio: " + hora_inicio
-				+ "\nConsultório: " + cons
-				+ "\nMedico: " + medico
-				+ "\nPaciente: " + paciente + "\n";
+		return "Consulta:" + "\nID: " + id_cons + "\nHora de Inicio: " + hora_inicio + "\nConsultório: " + cons
+				+ "\nMedico: " + medico + "\nPaciente: " + paciente + "\n";
 	}
-
 
 	public LocalDateTime getHora_inicio() {
 		return hora_inicio;
