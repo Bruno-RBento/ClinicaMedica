@@ -17,7 +17,6 @@ public class FuncConsulta {
         try {
             ObjectInputStream is = new ObjectInputStream(new FileInputStream(
                     "C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\consultas.dat"));
-            // Consulta.setUltimo(is.readInt());
             Consulta.setUltimo(is.readInt());
             consulta = (ArrayList<Consulta>) is.readObject();
             is.close();
@@ -33,15 +32,16 @@ public class FuncConsulta {
 
         int opcao;
         LocalDateTime dateTime = LocalDateTime.now();
-        System.out.println("Selecione o mes para fazer a marcacao");
 
-        for (int i = 0; i < 5; i++) {
-            System.out.println(i + " - " + dateTime.plusMonths(i).getMonth());
-        }
         do {
+            System.out.println("Selecione o mes para fazer a marcacao");
+            for (int i = 0; i < 5; i++) {
+                System.out.println(i + " - " + dateTime.plusMonths(i).getMonth());
+            }
+
             opcao = Ler.umInt();
 
-        } while (opcao <= 0 && opcao >= 5);
+        } while (opcao < 0 || opcao >= 5);
         return dateTime.plusMonths(opcao).getMonthValue();
     }
 
@@ -105,15 +105,15 @@ public class FuncConsulta {
         // basta um for
         int opcao;
 
-        System.out.println("Selecione o hora para fazer a marcacao");
-
-        for (int i = 8; i <= 20; i++) {
-            // if()filtrar pela disponibilidade do medico
-            System.out.println(i + " horas");
-        }
         do {
+            System.out.println("Selecione o hora para fazer a marcacao");
+
+            for (int i = 8; i <= 17; i++) {
+                // if()filtrar pela disponibilidade do medico
+                System.out.println(i + " horas");
+            }
             opcao = Ler.umInt();
-        } while (opcao <= 8 && opcao >= 20);
+        } while (opcao < 8 || opcao >= 17);
         return opcao;
     }
 

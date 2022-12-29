@@ -12,6 +12,7 @@ public class GerirMedico {
         System.out.println("1 - Adicionar medico");
         System.out.println("2 - Remover medico");
         System.out.println("3 - Listar medicos");
+        System.out.println("4- Encontrar medico por nome");
         System.out.println("7 - Sair");
         System.out.println("Qual a sua opcao:");
         opcao = Ler.umInt();

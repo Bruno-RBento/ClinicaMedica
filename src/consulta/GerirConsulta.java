@@ -21,6 +21,22 @@ public class GerirConsulta {
 
     private static Paciente pacienteF;
 
+<<<<<<< HEAD
+=======
+
+    public static int menuConsulta() {
+        int opcao;
+        System.out.println("1 - Criar Consulta");
+        System.out.println("2 - Listar as Consultas");
+        System.out.println("3 - Remover as Consultas");
+        System.out.println("7 - Sair ");
+        System.out.println("Selecione uma opcao");
+        opcao = Ler.umInt();
+        return opcao;
+    }
+
+
+>>>>>>> afef987b04c5ca8da0cb56b92dc4facab62f1fd9
     public static int menuPaciente() {
         int opcao;
         System.out.println("O paciente tem esta inscrito na clinica");
@@ -44,34 +60,69 @@ public class GerirConsulta {
 
     public static int menuEspecialidade(ArrayList<Medico> medicos) {
         int opcao;
-
+        do {
         for (int i = 0; i < medicos.size(); i++) {
             System.out.println(i + " - " + medicos.get(i).getNome() + " " + medicos.get(i).getApelido() + " "
                     + medicos.get(i).getEspecialidade());
         }
         System.out.println("Qual a sua opcao");
-        do {
+
             opcao = Ler.umInt();
 
+<<<<<<< HEAD
         } while (opcao < 0 && opcao > medicos.size());
+=======
+        }while (opcao < 0 || opcao > medicos.size());//TODO change to not allow other numbers
+>>>>>>> afef987b04c5ca8da0cb56b92dc4facab62f1fd9
         return medicos.get(opcao).getId();
     }
 
     public static int menuConsultorio() {
         int opcao;
+        do {
         System.out.println("Selecione o mes para fazer a marcacao");
         for (int i = 0; i < consultorios.size(); i++) {
             System.out.println(
                     i + " Consultorio numero " + consultorios.get(i).getNum() + " " + consultorios.get(i).getArea());
         }
-        do {
             opcao = Ler.umInt();
 
+<<<<<<< HEAD
         } while (opcao < 0 && opcao > consultorios.size());
+=======
+        }while (opcao < 0 || opcao > consultorios.size());
+>>>>>>> afef987b04c5ca8da0cb56b92dc4facab62f1fd9
         return consultorios.get(opcao).getNum();
     }
 
     public static void gerirConsultas() {
+        int escolha1;
+        do {
+            escolha1 = menuConsulta();
+
+            switch (escolha1) {
+                case 1:
+                    selecionarPacientes();
+                    break;
+                case 2:
+                    //Listar Consultas
+                    System.out.println(consultas);
+                    break;
+
+                    case 3:
+
+                        //TODO Remover consultas
+
+            }
+            //System.out.println(novoPaciente.toString());
+        }while (escolha1 != 7) ;
+    }
+
+
+
+
+
+    public static void selecionarPacientes() {
         int escolha;
         int escolha1;
         Paciente novoPaciente = null;
@@ -93,6 +144,7 @@ public class GerirConsulta {
                 pacientes.add(Paciente.novoPaciente());
                 FuncPaciente.saveTofile(pacientes);
 
+<<<<<<< HEAD
                 selecionarMedico();
                 break;
             }
@@ -109,6 +161,29 @@ public class GerirConsulta {
                 ArrayList<Medico> medicosSelecionados = new ArrayList<Medico>();
                 Especialidade especialidade = Especialidade.getEspecialidade();
                 medicosSelecionados = FuncMedico.searchEspecialidade(medicos, especialidade);
+=======
+public static void selecionarMedico(){
+    int num = menuMedico();
+    Medico medicoSelecionado = null;
+    Especialidade especialidade;
+    do{
+        switch (num) {
+            case 1:
+                ArrayList<Medico> medicosSelecionados = new ArrayList<Medico>();
+
+                do {
+                    System.out.println("Selecione uma especialidade");
+                    especialidade = Especialidade.getEspecialidade();
+                    System.out.println(especialidade);
+                    boolean bool = FuncMedico.searchEspecialidade(medicos, especialidade).isEmpty();
+                    if (bool){
+                        System.out.println("A especialidade selecionada nao tem medicos nestq clinica");
+                    }
+
+                }while (FuncMedico.searchEspecialidade(medicos, especialidade).isEmpty());
+
+                medicosSelecionados = FuncMedico.searchEspecialidade(medicos,especialidade);
+>>>>>>> afef987b04c5ca8da0cb56b92dc4facab62f1fd9
                 System.out.println(medicosSelecionados);
 
                 int idMedico = menuEspecialidade(medicosSelecionados);
@@ -122,16 +197,29 @@ public class GerirConsulta {
 
                 System.out.println("O Medico selecioando foi " + medicoSelecionado.getNome());
                 LocalDateTime localDateTime = FuncConsulta.menuDia(FuncConsulta.menuMes());
+<<<<<<< HEAD
                 FuncConsulta.menuHora();
                 // TODO Filtrar as Salas disponiveis
+=======
+
+                System.out.println("-----------------------");
+                //TODO Filtrar as Salas disponiveis
+>>>>>>> afef987b04c5ca8da0cb56b92dc4facab62f1fd9
                 menuConsultorio();
                 break;
             case 2:
                 System.out.println(medicos.toString());
                 medicoSelecionado = FuncMedico.searchMedico(medicos);
+<<<<<<< HEAD
                 System.out.println("O Medico selecioando foi " + medicoSelecionado.toString());
                 FuncConsulta.menuHora();
                 // TODO Filtrar as Salas disponiveis
+=======
+                System.out.println("O Medico selecioando foi "+ medicoSelecionado.toString());
+                LocalDateTime localDateTime2 = FuncConsulta.menuDia(FuncConsulta.menuMes());
+                System.out.println("-----------------------");
+                //TODO Filtrar as Salas disponiveis
+>>>>>>> afef987b04c5ca8da0cb56b92dc4facab62f1fd9
                 menuConsultorio();
                 break;
             }
