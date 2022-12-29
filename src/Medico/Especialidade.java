@@ -61,7 +61,7 @@ public enum Especialidade {
         case 13:
             return Especialidade.MEDICINA_GERAL_E_FAMILIAR;
         default:
-            throw new IllegalStateException("Unexpected value: " + opcao);
+            return null;
         }
     }
 }

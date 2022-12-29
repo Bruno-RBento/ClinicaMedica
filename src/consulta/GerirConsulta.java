@@ -49,28 +49,28 @@ public class GerirConsulta {
     }
     public static int menuEspecialidade(ArrayList<Medico> medicos){
         int opcao;
-
+        do {
         for (int i = 0; i < medicos.size(); i++) {
             System.out.println(  i + " - " + medicos.get(i).getNome() + " " + medicos.get(i).getApelido() + " "  + medicos.get(i).getEspecialidade());
         }
         System.out.println("Qual a sua opcao");
-        do {
+
             opcao = Ler.umInt();
 
-        }while (opcao <0 && opcao > medicos.size());
+        }while (opcao < 0 || opcao > medicos.size());//TODO change to not allow other numbers
         return medicos.get(opcao).getId();
     }
 
     public static int menuConsultorio(){
         int opcao;
+        do {
         System.out.println("Selecione o mes para fazer a marcacao");
         for (int i = 0; i < consultorios.size(); i++) {
             System.out.println( i + " Consultorio numero " + consultorios.get(i).getNum() + " " + consultorios.get(i).getArea());
         }
-        do {
             opcao = Ler.umInt();
 
-        }while (opcao <0 && opcao > consultorios.size());
+        }while (opcao < 0 || opcao > consultorios.size());
         return consultorios.get(opcao).getNum();
     }
 
@@ -106,11 +106,23 @@ public class GerirConsulta {
 public static void selecionarMedico(){
     int num = menuMedico();
     Medico medicoSelecionado = null;
+    Especialidade especialidade;
     do{
         switch (num) {
             case 1:
                 ArrayList<Medico> medicosSelecionados = new ArrayList<Medico>();
-                Especialidade especialidade = Especialidade.getEspecialidade();
+
+                do {
+                    System.out.println("Selecione uma especialidade");
+                    especialidade = Especialidade.getEspecialidade();
+                    System.out.println(especialidade);
+                    boolean bool = FuncMedico.searchEspecialidade(medicos, especialidade).isEmpty();
+                    if (bool){
+                        System.out.println("A especialidade selecionada nao tem medicos nestq clinica");
+                    }
+
+                }while (FuncMedico.searchEspecialidade(medicos, especialidade).isEmpty());
+
                 medicosSelecionados = FuncMedico.searchEspecialidade(medicos,especialidade);
                 System.out.println(medicosSelecionados);
 
@@ -126,7 +138,8 @@ public static void selecionarMedico(){
 
                 System.out.println("O Medico selecioando foi "+ medicoSelecionado.getNome());
                 LocalDateTime localDateTime = FuncConsulta.menuDia(FuncConsulta.menuMes());
-                FuncConsulta.menuHora();
+
+                System.out.println("-----------------------");
                 //TODO Filtrar as Salas disponiveis
                 menuConsultorio();
                 break;
@@ -134,7 +147,8 @@ public static void selecionarMedico(){
                 System.out.println(medicos.toString());
                 medicoSelecionado = FuncMedico.searchMedico(medicos);
                 System.out.println("O Medico selecioando foi "+ medicoSelecionado.toString());
-                FuncConsulta.menuHora();
+                LocalDateTime localDateTime2 = FuncConsulta.menuDia(FuncConsulta.menuMes());
+                System.out.println("-----------------------");
                 //TODO Filtrar as Salas disponiveis
                 menuConsultorio();
                 break;

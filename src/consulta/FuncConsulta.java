@@ -31,15 +31,16 @@ public class FuncConsulta {
 
         int opcao;
         LocalDateTime dateTime = LocalDateTime.now();
-        System.out.println("Selecione o mes para fazer a marcacao");
 
+        do {
+            System.out.println("Selecione o mes para fazer a marcacao");
         for (int i = 0; i < 5; i++) {
             System.out.println( i + " - " + dateTime.plusMonths(i).getMonth());
         }
-        do {
+
             opcao = Ler.umInt();
 
-        }while (opcao <= 0 && opcao >= 5);
+        }while (opcao < 0 || opcao >= 5);
         return dateTime.plusMonths(opcao).getMonthValue();
     }
 
@@ -94,6 +95,7 @@ public class FuncConsulta {
             opcao = Ler.umInt();
         } while (opcao <= start && opcao >= end);
         int hora = menuHora();
+
         return LocalDateTime.of(year,mes,opcao,hora,0,0);
     }
 
@@ -101,16 +103,14 @@ public class FuncConsulta {
         //Todo filtrar pela disponibilidade do medico criar uma classe nas marcacoes basta um for
         int opcao;
 
-
-        System.out.println("Selecione o hora para fazer a marcacao");
-
-        for (int i = 8; i <= 20; i++) {
+        do {
+            System.out.println("Selecione o hora para fazer a marcacao");
+        for (int i = 8; i <= 17; i++) {
             // if()filtrar pela disponibilidade do medico
             System.out.println(i + " horas");
         }
-        do {
             opcao = Ler.umInt();
-        }while (opcao <= 8 && opcao >=20);
+        }while (opcao < 8 || opcao >= 17);
         return opcao;
     }
 
