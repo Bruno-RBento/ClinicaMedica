@@ -116,7 +116,11 @@ public class GerirConsulta {
                     System.out.println("                    Não encontrado Consultorio            ");
                     continue;
                 }
+                System.out.println("O Medico selecioando foi "+ m.getNome());
+                LocalDateTime data = FuncConsulta.menuDia(FuncConsulta.menuMes());
 
+
+                /*
                 LocalDateTime data;
                 while (true) {
                    // TODO change this
@@ -152,6 +156,7 @@ public class GerirConsulta {
                         System.out.println("                    Data invalida!                 ");
                     }
                 }
+*/
 
                 consultas.add(new Consulta(data, rio, m, p));
                 break;
