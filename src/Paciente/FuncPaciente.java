@@ -29,8 +29,8 @@ public class FuncPaciente {
     // Ler ficheiro
     try {
 //TODO
-      //ObjectInputStream is = new ObjectInputStream(new FileInputStream("./MemoryFile/paciente.dat"));
-      ObjectInputStream is = new ObjectInputStream(new FileInputStream("C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\paciente.dat"));
+      ObjectInputStream is = new ObjectInputStream(new FileInputStream("./MemoryFile/paciente.dat"));
+      //ObjectInputStream is = new ObjectInputStream(new FileInputStream("C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\paciente.dat"));
       Paciente.setUltimo(is.readInt());
       pacientes = (ArrayList<Paciente>) is.readObject();
       is.close();
@@ -47,8 +47,8 @@ public class FuncPaciente {
     // atualizar ficheiro
     try {
       //todo
-      //ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("./MemoryFile/paciente.dat"));
-      ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\paciente.dat"));
+      ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("./MemoryFile/paciente.dat"));
+      //ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\paciente.dat"));
       // escrever o objeto livros no ficheiro
       os.writeInt(Paciente.getUltimo());
       os.writeObject(pacientes);
