@@ -28,8 +28,8 @@ class Administracao {
       case 4:
         GerirConsulta.gerirConsultas();
         break;
-
       }
     } while (op != -1);
+
   }
 }

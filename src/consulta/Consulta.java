@@ -9,8 +9,7 @@ import java.time.LocalDateTime;
 
 public class Consulta implements Serializable {
 	private static int ultimoId = 0;
-	private long id_cons;
-	// TODO CHANGE DATATYPE
+	private int id;
 	private LocalDateTime hora_inicio;
 	private Consultorio cons;
 	private Medico medico;
@@ -18,17 +17,16 @@ public class Consulta implements Serializable {
 
 	public Consulta(LocalDateTime h_i, Consultorio cons, Medico med, Paciente p) {
 		ultimoId++;
-		this.id_cons = ultimoId;
+		this.id = ultimoId;
 		this.hora_inicio = h_i;
 
 		this.cons = cons;
 		this.medico = med;
 		this.paciente = p;
-		ultimoId++;
 	}
 
-	public long getId_Cons() {
-		return this.id_cons = ultimoId;
+	public int getId() {
+		return this.id;
 	}
 
 	public static int getUltimo() {
@@ -39,11 +37,11 @@ public class Consulta implements Serializable {
 		ultimoId = i;
 	}
 
-	public Consultorio getCons() {
+	public Consultorio getConsultorio() {
 		return cons;
 	}
 
-	public void setCons(Consultorio cons) {
+	public void setConsultorio(Consultorio cons) {
 		this.cons = cons;
 	}
 
@@ -65,8 +63,8 @@ public class Consulta implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Consulta:" + "\nID: " + id_cons + "\nHora de Inicio: " + hora_inicio + "\nConsultório: " + cons
-				+ "\nMedico: " + medico + "\nPaciente: " + paciente + "\n";
+		return "Consulta:" + "\n n do consultorio: " + id + "\nHora de Inicio: " + hora_inicio + "\nMedico: " + medico
+				+ "\nPaciente: " + paciente + "\n";
 	}
 
 	public LocalDateTime getHora_inicio() {
@@ -75,5 +73,10 @@ public class Consulta implements Serializable {
 
 	public void setHora_inicio(LocalDateTime hora_inicio) {
 		this.hora_inicio = hora_inicio;
+	}
+
+	public Object clone() {
+		Consulta copia = new Consulta(this.hora_inicio, this.cons, this.medico, this.paciente);
+		return copia;
 	}
 }

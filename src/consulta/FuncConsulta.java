@@ -1,7 +1,9 @@
 package consulta;
 
+import Consultorio.GerirConsultorio;
 import Ler.Ler;
-import Medico.Medico;
+import Medico.GerirMedico;
+import Paciente.GerirPaciente;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -15,8 +17,7 @@ public class FuncConsulta {
         ArrayList<Consulta> consulta = new ArrayList<Consulta>();
         // Ler ficheiro
         try {
-            ObjectInputStream is = new ObjectInputStream(new FileInputStream(
-                    "C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\consultas.dat"));
+            ObjectInputStream is = new ObjectInputStream(new FileInputStream("./MemoryFile/consultas.dat"));
             Consulta.setUltimo(is.readInt());
             consulta = (ArrayList<Consulta>) is.readObject();
             is.close();
@@ -26,6 +27,20 @@ public class FuncConsulta {
             System.out.println(e.getMessage());
         }
         return consulta;
+    }
+
+    public static void saveTofile(ArrayList<Consulta> consultas) {
+        // atualizar ficheiro
+        try {
+            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("./MemoryFile/consultas.dat"));
+            // escrever o objeto livros no ficheiro
+            os.writeInt(Consulta.getUltimo());
+            os.writeObject(consultas);
+            os.flush(); // os dados são copiados de memória para o disco
+            os.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static int menuMes() {
@@ -117,19 +132,4 @@ public class FuncConsulta {
         return opcao;
     }
 
-    public static void saveTofile(ArrayList<Consulta> consultas) {
-        // atualizar ficheiro
-        try {
-            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(
-                    "C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\consultas.dat"));
-            // escrever o objeto livros no ficheiro
-            os.writeInt(Consulta.getUltimo());
-            os.writeObject(consultas);
-            os.flush(); // os dados são copiados de memória para o disco
-            System.out.println(consultas);
-            os.close();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
 }

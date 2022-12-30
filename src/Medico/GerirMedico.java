@@ -2,7 +2,6 @@ package Medico;
 
 import Ler.Ler;
 
-import java.io.*;
 import java.util.ArrayList;
 
 public class GerirMedico {
@@ -12,7 +11,7 @@ public class GerirMedico {
         System.out.println("1 - Adicionar medico");
         System.out.println("2 - Remover medico");
         System.out.println("3 - Listar medicos");
-        System.out.println("4- Encontrar medico por nome");
+        System.out.println("4 - Encontrar medico por nome");
         System.out.println("7 - Sair");
         System.out.println("Qual a sua opcao:");
         opcao = Ler.umInt();
@@ -22,8 +21,7 @@ public class GerirMedico {
     public static void gerirMedicos() {
         int escolha;
         // Lista que vai conter todos os livros;
-        ArrayList<Medico> medicos = new ArrayList<Medico>();
-        medicos = FuncMedico.getMedico();
+        ArrayList<Medico> medicos = FuncMedico.getMedico();
 
         do {
             escolha = menu();

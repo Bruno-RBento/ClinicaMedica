@@ -22,7 +22,7 @@ public class GerirPaciente {
   public static void gerirPaciente() {
     int op;
     // Lista que vai conter todos os livros;
-    ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
+    ArrayList<Paciente> pacientes;
     // Ler ficheiro
     pacientes = FuncPaciente.getPacientes();
 
@@ -31,7 +31,6 @@ public class GerirPaciente {
       switch (op) {
       case 1:
         pacientes.add(Paciente.novoPaciente());
-        FuncPaciente.saveTofile(pacientes);
         break;
       case 2:
         System.out.print("Id do utilizador que se pretende remover: ");
@@ -56,7 +55,6 @@ public class GerirPaciente {
         System.out.println(pacientes);
         break;
       case 4:
-
         FuncPaciente.searchPaciente(pacientes);
         break;
       default:

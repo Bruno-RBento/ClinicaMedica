@@ -2,20 +2,30 @@ package Consultorio;
 
 import java.io.*;
 import java.util.ArrayList;
-import Medico.Especialidade;
+
 import Ler.Ler;
 
 public class FuncConsultorio {
-	private static File file1 = new File("C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\salas.dat");
 
-	public static ArrayList<Consultorio> getConsultorios(){
-		File file1 = new File("C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\salas.dat");
+	public static Consultorio searchConsultorio(ArrayList<Consultorio> consultorios) {
+		System.out.print("Num do consultorio: ");
+		int num = Ler.umInt();
+		System.out.println();
+		for (int i = 0; i < consultorios.size(); i++) {
+			if (consultorios.get(i).getNum() == num) {
+				return consultorios.get(i);
+			}
+		}
+
+		return null;
+	}
+
+	public static ArrayList<Consultorio> getConsultorios() {
 		ArrayList<Consultorio> salas = new ArrayList<Consultorio>();
 
 		try {
-			FileInputStream fIs = new FileInputStream(file1);
-			ObjectInputStream is = new ObjectInputStream(fIs);
-			Consultorio.setUltNumero(is.readInt());
+			ObjectInputStream is = new ObjectInputStream(new FileInputStream("./MemoryFile/salas.dat"));
+			Consultorio.setUltimo(is.readInt());
 			salas = (ArrayList<Consultorio>) is.readObject();
 			is.close();
 		} catch (IOException e) {
@@ -26,74 +36,16 @@ public class FuncConsultorio {
 		return salas;
 	}
 
-
-
-	public static void adicionarConsultorio(ArrayList<Consultorio> salas) {
-		System.out.println("Qual as medidas do consultorio no formato - (width height)");
-		String medidas = Ler.umaString();
-		String lados[] = medidas.split(" ");
-
-		Consultorio c = new Consultorio( Integer.parseInt(lados[0]), Integer.parseInt(lados[1]));
-		salas.add(c);
-
+	public static void saveToFile(ArrayList<Consultorio> salas) {
 		try {
-			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(file1));
-			os.writeInt(Consultorio.getUltNumero());
+			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("./MemoryFile/salas.dat"));
+			// escrever o objeto livros no ficheiro
+			os.writeInt(Consultorio.getUltimo());
 			os.writeObject(salas);
-			os.flush();
+			os.flush(); // os dados são copiados de memória para o disco
 			os.close();
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
 	}
-
-	public static void getSala(ArrayList<Consultorio> salas) {
-		System.out.println("Qual o número do Consultorio?");
-		int num = Ler.umInt();
-		Consultorio x = new Consultorio();
-
-		for (int i = 0; i < salas.size(); i++) {
-			if (salas.get(i).getNum() == num) {
-				x = salas.get(i).clone();
-				break;
-			}
-		}
-
-		System.out.println(
-				"Consultorio nº " + x.getNum() + "\nArea: " + x.getArea());
-	}
-/*
-	public static void altEsp(ArrayList<Consultorio> salas) {
-		System.out.println("Qual o número do Consultorio?");
-		int num = Ler.umInt();
-		for (int i = 0; i < salas.size(); i++) {
-			if (salas.get(i).getNum() == num) {
-				System.out.println("Qual a nova especialidade?");
-				salas.get(i).setEspecialidade(Especialidade.getEspecialidade());
-				break;
-			}
-		}
-
-		try {
-			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(file1));
-			os.writeInt(Consultorio.getUltNumero());
-			os.writeObject(salas);
-			os.flush();
-			os.close();
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-	}
-*/
-
-	public static void areaT(ArrayList<Consultorio> salas) {
-		int areaT = 0;
-
-		for (Consultorio i : salas) {
-			areaT += i.getArea();
-		}
-
-		System.out.println("Area Total: " + areaT + " m2");
-	}
-
 }

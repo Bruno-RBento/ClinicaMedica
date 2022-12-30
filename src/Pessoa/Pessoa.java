@@ -1,6 +1,7 @@
 package Pessoa;
 
 import java.io.Serializable;
+import java.time.DateTimeException;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.Year;
@@ -23,18 +24,36 @@ public class Pessoa implements Serializable {
     public static Pessoa novaPessoa() {
         System.out.print("O primeiro nome da pessoa: ");
         String nome = Ler.umaString();
-        System.out.print("O apelido da pessoa");
+        System.out.print("O apelido da pessoa: ");
         String apelido = Ler.umaString();
         System.out.print("A morada da pessoa: ");
         String morada = Ler.umaString();
-        System.out.print("Data de nascimento (DD MM YYYY): ");
-        int dd = Ler.umInt();
-        int mm = Ler.umInt();
-        int yyyy = Ler.umInt();
 
-        Month m = Month.of(mm);
-        LocalDateTime nascimento = LocalDateTime.of(yyyy, m, dd, 0, 0);
+        LocalDateTime nascimento;
+        while (true) {
+            System.out.print("Data de nascimento\n");
+            System.out.print("Dia: ");
+            int dd = Ler.umInt();
 
+            System.out.print("\nMes: ");
+            int mm = Ler.umInt();
+            Month month;
+            try {
+                month = Month.of(mm);
+            } catch (DateTimeException e) {
+                System.out.println("Mes invalido");
+                continue;
+            }
+            System.out.print("\nAno: ");
+            int yyyy = Ler.umInt();
+
+            try {
+                nascimento = LocalDateTime.of(yyyy, month, dd, 0, 0);
+                break;
+            } catch (DateTimeException e) {
+                System.out.println("Data invalida!");
+            }
+        }
         return new Pessoa(nome, apelido, morada, nascimento);
     }
 

@@ -23,11 +23,11 @@ public class Consultorio implements Serializable {
         area = width * height;
     }
 
-    public static int getUltNumero() {
+    public static int getUltimo() {
         return ultNumero;
     }
 
-    public static void setUltNumero(int ultNumero) {
+    public static void setUltimo(int ultNumero) {
         Consultorio.ultNumero = ultNumero;
     }
 
@@ -49,7 +49,7 @@ public class Consultorio implements Serializable {
 
     @Override
     public String toString() {
-        return "Consultorio [num=" + num +  ", area=" + area + "]";
+        return "Consultorio [num=" + num + ", area=" + area + "]";
     }
 
     public boolean equals(Object o) {
