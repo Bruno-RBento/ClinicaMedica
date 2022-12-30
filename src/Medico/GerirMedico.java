@@ -8,12 +8,16 @@ public class GerirMedico {
 
     public static int menu() {
         int opcao;
-        System.out.println("1 - Adicionar medico");
-        System.out.println("2 - Remover medico");
-        System.out.println("3 - Listar medicos");
-        System.out.println("4 - Encontrar medico por nome");
-        System.out.println("7 - Sair");
-        System.out.println("Qual a sua opcao:");
+        System.out.println("#########################################################");
+        System.out.println("|                    Menu Medico                         |");
+        System.out.println("|________________________________________________________|");
+        System.out.println("|                    1 - Adicionar medico                |");
+        System.out.println("|                    2 - Remover medico                  |");
+        System.out.println("|                    3 - Listar medicos                  |");
+        System.out.println("|                    4 - Encontrar medico por nome       |");
+        System.out.println("|                    7 - Sair                            |");
+        System.out.println("#########################################################");
+        System.out.println("                    Selecione uma opcao                  ");
         opcao = Ler.umInt();
         return opcao;
     }

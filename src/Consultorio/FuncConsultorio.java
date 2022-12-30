@@ -24,7 +24,9 @@ public class FuncConsultorio {
 		ArrayList<Consultorio> salas = new ArrayList<Consultorio>();
 
 		try {
-			ObjectInputStream is = new ObjectInputStream(new FileInputStream("./MemoryFile/salas.dat"));
+			//TODO
+			//ObjectInputStream is = new ObjectInputStream(new FileInputStream("./MemoryFile/salas.dat"));
+			ObjectInputStream is = new ObjectInputStream(new FileInputStream("C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\salas.dat"));
 			Consultorio.setUltimo(is.readInt());
 			salas = (ArrayList<Consultorio>) is.readObject();
 			is.close();
@@ -38,7 +40,9 @@ public class FuncConsultorio {
 
 	public static void saveToFile(ArrayList<Consultorio> salas) {
 		try {
-			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("./MemoryFile/salas.dat"));
+			//TODO
+			//ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("./MemoryFile/salas.dat"));
+			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\salas.dat"));
 			// escrever o objeto livros no ficheiro
 			os.writeInt(Consultorio.getUltimo());
 			os.writeObject(salas);

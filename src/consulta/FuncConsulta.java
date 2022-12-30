@@ -17,7 +17,9 @@ public class FuncConsulta {
         ArrayList<Consulta> consulta = new ArrayList<Consulta>();
         // Ler ficheiro
         try {
-            ObjectInputStream is = new ObjectInputStream(new FileInputStream("./MemoryFile/consultas.dat"));
+            //TODO
+            //ObjectInputStream is = new ObjectInputStream(new FileInputStream("./MemoryFile/consultas.dat"));
+            ObjectInputStream is = new ObjectInputStream(new FileInputStream("C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\consultas.dat"));
             Consulta.setUltimo(is.readInt());
             consulta = (ArrayList<Consulta>) is.readObject();
             is.close();
@@ -32,7 +34,9 @@ public class FuncConsulta {
     public static void saveTofile(ArrayList<Consulta> consultas) {
         // atualizar ficheiro
         try {
-            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("./MemoryFile/consultas.dat"));
+            //todo
+            //ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("./MemoryFile/consultas.dat"));
+            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("C:\\Users\\Bruno\\IdeaProjects\\ClinicaMedica\\src\\MemoryFile\\consultas.dat"));
             // escrever o objeto livros no ficheiro
             os.writeInt(Consulta.getUltimo());
             os.writeObject(consultas);
@@ -43,12 +47,28 @@ public class FuncConsulta {
         }
     }
 
+    public static int menuMedico() {
+        int opcao;
+        do {
+        System.out.println("#########################################################");
+        System.out.println("|                    Selecao do medico                   |");
+        System.out.println("|________________________________________________________|");
+        System.out.println("|         1 - Criar uma consulta por especialidade       |");
+        System.out.println("|         2 - Criar uma consulta usando o nome do medico |");
+        System.out.println("#########################################################");
+        System.out.println("                    Selecione uma opcao                  ");
+        opcao = Ler.umInt();
+        }while (opcao != 1 && opcao != 2);//TODO change to not allow other numbers
+        return opcao;
+    }
+
     public static int menuMes() {
 
         int opcao;
         LocalDateTime dateTime = LocalDateTime.now();
 
         do {
+
             System.out.println("Selecione o mes para fazer a marcacao");
             for (int i = 0; i < 5; i++) {
                 System.out.println(i + " - " + dateTime.plusMonths(i).getMonth());

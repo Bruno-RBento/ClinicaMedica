@@ -63,8 +63,8 @@ public class Consulta implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Consulta:" + "\n n do consultorio: " + id + "\nHora de Inicio: " + hora_inicio + "\nMedico: " + medico
-				+ "\nPaciente: " + paciente + "\n";
+		return "(Consulta:" + "\n n do consultorio: " + id + "\nHora de Inicio: " + hora_inicio + "\nMedico: " + medico
+				+ "\nPaciente: " + paciente + "\n) \n";
 	}
 
 	public LocalDateTime getHora_inicio() {

@@ -27,10 +27,21 @@ public enum Especialidade {
     }
 
     public static Especialidade getEspecialidade() {
-        System.out.println("1 - CARDIOLOGIA" + "\n2 - ANESTESIOLOGIA" + "\n3 - DERMATOLOGIA" + "\n4 - ENDOCRINOLOGIA"
-                + "\n5 - GASTROENTEROLOGIA" + "\n6 - PNEUMOLOGIA" + "\n7 - OBSTERICIA" + "\n8 - PSIQUIATRIA"
-                + "\n9 - CIRUGIA_GERAL" + "\n10 - MEDICINA_TRABALHO" + "\n11 - MEDICINA_DESPORTIVA"
-                + "\n12 - MEDICINA_FISICA_E_REABILITCAO" + "\n13 - MEDICINA_GERAL_E_FAMILIAR");
+        System.out.println("         1 - CARDIOLOGIA" +
+                "\n         2 - ANESTESIOLOGIA" +
+                "\n         3 - DERMATOLOGIA" +
+                "\n         4 - ENDOCRINOLOGIA" +
+                "\n         5 - GASTROENTEROLOGIA" +
+                "\n         6 - PNEUMOLOGIA" +
+                "\n         7 - OBSTERICIA" +
+                "\n         8 - PSIQUIATRIA" +
+                "\n         9 - CIRUGIA_GERAL" +
+                "\n         10 - MEDICINA_TRABALHO" +
+                "\n         11 - MEDICINA_DESPORTIVA" +
+                "\n         12 - MEDICINA_FISICA_E_REABILITCAO" +
+                "\n         13 - MEDICINA_GERAL_E_FAMILIAR" +
+                "\n#########################################################" +
+                "\n                    Selecione uma opcao                  ");
         int opcao = Ler.umInt();
 
         switch (opcao) {

@@ -8,11 +8,17 @@ class Administracao {
   public static void main(String[] args) {
     int op = 0;
     do {
-      System.out.println("1 - Gerir pacientes");
-      System.out.println("2 - Gerir medicos");
-      System.out.println("3 - Gerir Consultorio");
-      System.out.println("4 - Gerir Consulta");
-      System.out.println("-1 - Sair");
+      System.out.println("#########################################################");
+      System.out.println("|                    Menu Principal                      |");
+      System.out.println("|________________________________________________________|");
+      System.out.println("|                    1 - Gerir pacientes                 |");
+      System.out.println("|                    2 - Gerir medicos                   |");
+      System.out.println("|                    3 - Gerir Consultorio               |");
+      System.out.println("|                    4 - Gerir Consulta                  |");
+      System.out.println("|                    -1 - Sair                           |");
+      System.out.println("#########################################################");
+      System.out.println("                    Selecione uma opcao                  ");
+
       op = Ler.umInt();
 
       switch (op) {

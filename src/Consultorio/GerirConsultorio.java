@@ -6,12 +6,18 @@ import Ler.Ler;
 public class GerirConsultorio {
 
 	private static void menuConsul() {
-		System.out.println("1 - Adicionar Consultorio");
-		System.out.println("2 - Lista com dados dos Consultorios");
-		System.out.println("3 - Encontrar o consultorio pelo numero");
-		System.out.println("4 - Area Total dos Consultorios");
-		System.out.println("5 - Remover Consultorio");
-		System.out.println("7 - Sair");
+
+		System.out.println("#########################################################");
+		System.out.println("|                    Menu Consultorio                    |");
+		System.out.println("|________________________________________________________|");
+		System.out.println("|                 1 - Adicionar Consultorio              |");
+		System.out.println("|                 2 - Lista com dados dos Consultorios   |");
+		System.out.println("|                 3 - Encontrar o consultorio pelo numero|");
+		System.out.println("|                 4 - Area Total dos Consultorios        |");
+		System.out.println("|                 5 - Remover Consultorio                |");
+		System.out.println("|                 7 - Sair                               |");
+		System.out.println("#########################################################");
+		System.out.println("                    Selecione uma opcao                  ");
 	}
 
 	public static void gerirConsultorio() {

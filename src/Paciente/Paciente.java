@@ -33,6 +33,7 @@ public class Paciente extends Pessoa implements Serializable {
   }
 
   public String toString() {
-    return String.format("Paciente ( Id: %d, %s )", id, super.toString());
+
+    return String.format("Paciente Id: %d, %s )\n", id, super.toString());
   }
 }

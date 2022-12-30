@@ -43,7 +43,8 @@ public class Medico extends Pessoa implements Serializable {
 
     @Override
     public String toString() {
-        return "Medico ( " + "id=" + id + ", " + super.toString() + ", especialidade=" + especialidade + " )";
+        //return String.format("Paciente Id: %d, %s )\n", id, super.toString());
+        return "(Medico Id=" + id + ", " + super.toString() + ", especialidade=" + especialidade + " )\n";
     }
 
 }

@@ -9,12 +9,16 @@ public class GerirPaciente {
 
   public static int menu() {
     int opcao;
-    System.out.println("1 - Adicionar paciente");
-    System.out.println("2 - Remover paciente");
-    System.out.println("3 - Listar pacientes");
-    System.out.println("4 - Encontrar pacientes por nome");
-    System.out.println("7 - Voltar");
-    System.out.println("Qual a sua opcao:");
+    System.out.println("#########################################################");
+    System.out.println("|                    Menu Paciente                       |");
+    System.out.println("|________________________________________________________|");
+    System.out.println("|                    1 - Adicionar paciente              |");
+    System.out.println("|                    2 - Remover paciente                |");
+    System.out.println("|                    3 - Listar pacientes                |");
+    System.out.println("|                    4 - Encontrar pacientes por nome    |");
+    System.out.println("|                    7 - Sair                            |");
+    System.out.println("#########################################################");
+    System.out.println("                    Selecione uma opcao                  ");
     opcao = Ler.umInt();
     return opcao;
   }
